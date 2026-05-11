@@ -1,0 +1,27 @@
+$SChannelRegPath ="HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols"
+New-Item $SChannelRegPath"\TLS 1.2\Server" -Force
+New-Item $SChannelRegPath"\TLS 1.2\Client" -Force
+New-ItemProperty -Path $SChannelRegPath"\TLS 1.2\Server" `
+-Name Enabled -Value 1 -PropertyType DWORD
+New-ItemProperty -Path $SChannelRegPath"\TLS 1.2\Server" `
+-Name DisabledByDefault -Value 0 -PropertyType DWORD
+New-ItemProperty -Path $SChannelRegPath"\TLS 1.2\Client" `
+-Name Enabled -Value 1 -PropertyType DWORD
+New-ItemProperty -Path $SChannelRegPath"\TLS 1.2\Client" `
+-Name DisabledByDefault -Value 0 -PropertyType DWORD
+New-Item $SChannelRegPath -Name "TLS 1.0"
+New-Item $SChannelRegPath"\TLS 1.0" -Name SERVER
+New-ItemProperty -Path $SChannelRegPath"\TLS 1.0\SERVER" `
+-Name Enabled -Value 0 -PropertyType DWORD
+New-Item $SChannelRegPath -Name "TLS 1.1"
+New-Item $SChannelRegPath"\TLS 1.1\Server" 
+New-Item $SChannelRegPath"\TLS 1.1\Client" 
+New-ItemProperty -Path $SChannelRegPath"\TLS 1.1\Server" `
+-Name Enabled -Value 0 -PropertyType DWORD
+New-ItemProperty -Path $SChannelRegPath"\TLS 1.1\Server" `
+-Name DisabledByDefault -Value 0 -PropertyType DWORD
+New-ItemProperty -Path $SChannelRegPath"\TLS 1.1\Client" `
+-Name Enabled -Value 0 -PropertyType DWORD
+New-ItemProperty -Path $SChannelRegPath"\TLS 1.1\Client" `
+-Name DisabledByDefault -Value 0 -PropertyType DWORD
+
